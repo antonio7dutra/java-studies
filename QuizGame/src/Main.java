@@ -19,7 +19,6 @@ public class Main {
 
         int[] answers = {1, 1, 2, 3, 4};
         int score = 0;
-        int guess;
 
         System.out.println("**********************************");
         System.out.println("Welcome to the Antonio's Quiz Game");
@@ -32,8 +31,25 @@ public class Main {
                 System.out.println(option);
             }
 
-            System.out.print("Enter your guess: ");
-            guess = scanner.nextInt();
+            int guess;
+
+            while (true) {
+                System.out.print("Enter your guess: ");
+
+                while (!scanner.hasNextInt()) {
+                    System.out.print("Please enter a number: ");
+                    scanner.next();
+                }
+
+                guess = scanner.nextInt();
+
+                if (guess >= 1 && guess <= options[i].length) {
+                    break;
+                }
+
+                System.out.println("Choose a number between 1 and " + options[i].length);
+            }
+
 
             if(guess == answers[i]){
                 System.out.println("********");
